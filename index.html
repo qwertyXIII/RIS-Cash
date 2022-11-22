@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/normalise.css">
+  <link rel="stylesheet" href="./styles/index.css">
+  <title>РИМ | Кассы</title>
+</head>
+
+<body class="page">
+
+
+  <header class="header">
+    <div class="header__info">
+      <div class="logo">
+        <ion-icon class="logo__text" name="calculator-outline"></ion-icon>
+        <h1 class="logo__text">RIS | Cash <span style="font-size: 10px;">By ÐXłłł</span></h1>
+      </div>
+
+      <ion-icon class="logo__text" name="person-circle-outline"></ion-icon>
+    </div>
+    <div class="tab-selectors">
+      <div class="tab-selector" id="allCash">Все кассы</div>
+      <div class="tab-selector" id="inRepair">В ремонте</div>
+      <div class="tab-selector" id="inForwarder">У экспедиторов</div>
+      <div class="tab-selector" id="inShop">В магазине</div>
+      <div class="tab-selector" id="FNValidityEnds">Заканчивается ФН</div>
+      <div class="tab-selector" id="history">История</div>
+      <div class="tab-selector" id="forwarders">Экспедиторы</div>
+      <div class="tab-selector" id="createOrder">Выдать/Принять</div>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <div class="tabs ">
+
+    <div class="loading-screen">
+      <div class="loading-box">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <p class="loading-screen__text" style="color: white;">Загрузка базы данных с сервера</p>
+    </div>
+
+    <div class="tab start-page" style="user-select: none;">
+      <h1 class="logo__text" style="margin: 0 0 20px 0;">RIS | Cash <span style="font-size: 10px;">By ÐXłłł</span></h1>
+      <p class="logo__text" style="font-size: 15px;">WEB-Приложение для учета кассового оборудования</p>
+      <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">Разработанно сотрудником сервисной зоны компании ООО "МВМ" Вертинским Дмитрием, табельный номер 146167</p>
+      <p class="logo__text" style="font-size: 10px;">v0.2.1 [beta]</p>
+    </div>
+
+    <div class="tab allCash tab_closed">
+      <div class="search">
+        <input name="allCash" location="all" class="search__input" type="text"
+          placeholder="Начните писать сюда номер ККТ, имя экспедитора или дату выдачи">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed inRepair">
+      <div class="search">
+        <input class="search__input" type="text" placeholder="Начните писать сюда номер ККТ или дату выдачи">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed FNValidityEnds">
+      <div class="search">
+        <input class="search__input" type="text" placeholder="Начните писать сюда номер ККТ или дату выдачи">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed inForwarder">
+      <div class="search">
+        <input class="search__input" type="text"
+          placeholder="Начните писать сюда номер ККТ, имя экспедитора или дату выдачи">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed inShop">
+      <div class="search">
+        <input class="search__input" type="text" placeholder="Начните писать сюда номер ККТ">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed history">
+      <div class="search">
+        <input location="all" class="search__input" type="text"
+          placeholder="Начните писать сюда номер ККТ или имя экспедитора или дату выдачи">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed forwarders">
+      <div class="search">
+        <input class="search__input" type="text" placeholder="Начните писать сюда имя или номер телефона экспедитора">
+        <ion-icon class="search__icon" name="search-outline"></ion-icon>
+      </div>
+      <div class="elements">
+      </div>
+    </div>
+
+    <div class="tab tab_closed createOrder">
+
+      <div class="form form-get">
+        <h1 class="logo__text" style="font-size: 30px;">Принять кассу</h1>
+        <div class="form_input-box">
+          <select class="from form__input">
+            <option value="repair">Из ремонта</option>
+            <option value="forwarder">От экспедитора</option>
+          </select>
+          <input class="kkt form__input" type="text" placeholder="Отсканируйте кассу или квитанцию" list="kktlist1">
+            <datalist class="kktlist" id="kktlist1"></datalist>
+          <p class="form__text">Срок действия ФН до:</p>
+          <input class="fn form__input" type="date">
+          <p class="form__text form__text_small">оставьте пустым, если срок действия не обновлялся</p>
+          <p class="form__text">⚠ Не забудьте взять подпись с экспедитора на ранее распечатанной квитанции!</p>
+        </div>
+        <div class="tab-selector" id="kkt-get">Принять</div>
+      </div>
+
+      <div class="form form-give">
+        <h1 class="logo__text" style="font-size: 30px;">Выдать кассу</h1>
+        <div class="form_input-box">
+          <select class="from form__input">
+            <option value="repair">В ремонт</option>
+            <option value="forwarder">Экспедитору</option>
+          </select>
+          <input class="kkt form__input" type="text" placeholder="Отсканируйте кассу" list="kktlist">
+            <datalist class="kktlist" id="kktlist"></datalist>
+          <input class="reader form__input" type="text" placeholder="Отсканируйте ридер">
+          <input class="forwarder form__input" type="text" placeholder="Начните вводить имя экспедитора" list="forwarderList">
+            <datalist class="forwarderList" id="forwarderList"></datalist>
+          <input class="number form__input" type="tel" placeholder="Введите номер телефона" maxlength="10" minlength="10">
+        </div>
+        <div class="tab-selector" id="kkt-give">Выдать</div>
+      </div>
+      
+    </div>
+
+  </div>
+
+  <!-- Templates -->
+
+  <template id="element-template-cash">
+    <div class="element">
+      <div class="element__visible">
+        <div class="element__visible__texts">
+          <p class="element__text">ККТ: <span class="kkt-data kkt-number">0602 1235 1452 7458</span> S/N: <span
+              class="kkt-data kkt-SN">0000001235</span></p>
+          <p class="element__text">Местонахождение оборудования: <span class="kkt-data kkt-location">у
+              экспедитора</span> <span class="kkt-data kkt-forwarder">ФИО экспедитора</span></p>
+        </div>
+        <ion-icon class="opener" name="chevron-down-outline"></ion-icon>
+      </div>
+
+      <div class="element__invisible element__invisible_closed">
+        <p class="element__text">Ридер с кассой №: <span class="kkt-data kkt-reader">126548641351681381885</span></p>
+        <p class="element__text">Срок действия ФН до: <span class="kkt-data kkt-FN-validity-period">22.11.2022</span>
+        </p>
+        <p class="element__text">Выдана: <span class="kkt-data kkt-issued">22.11.2022</span></p>
+      </div>
+    </div>
+  </template>
+
+  <template id="element-template-forwarders">
+    <div class="element">
+      <div class="element__visible">
+        <div class="element__visible__texts">
+          <p class="element__text forwarder-name kkt-data"></p>
+          <p class="element__text">Номер телефона: <span class="kkt-data forwarder-number"></span></p>
+        </div>
+      </div>
+    </div>
+  </template>
+<!-- [
+  {
+    "kkt": "0000000000000001",
+    "sn": "0000000001",
+    "issued": "22.11.2022",
+    "accepted": "",
+    "location": "forwarder",
+    "forwarder": "Familiya Imya Otchestvo",
+    "reader": "0000000000000001"
+  }
+] -->
+  <template id="element-template-history">
+    <div class="element">
+      <div class="element__visible">
+        <div class="element__visible__texts">
+          <p class="element__text">ККТ: <span class="kkt-data kkt-number">0602 1235 1452 7458</span> S/N: <span class="kkt-data kkt-SN"></span></p>
+          <p class="element__text">Выдано: <span class="kkt-data kkt-issued"></span>   Принято: <span class="kkt-data kkt-accepted"></span></p>
+        </div>
+        <ion-icon class="opener" name="chevron-down-outline"></ion-icon>
+      </div>
+
+      <div class="element__invisible element__invisible_closed">
+        <p class="element__text">Ридер с кассой №: <span class="kkt-data kkt-reader">126548641351681381885</span></p>
+        <p class="element__text"><span class="kkt-data kkt-location">22.11.2022</span></p>
+      </div>
+    </div>
+  </template>
+
+  <script type="module" src="./components/constants.js"></script>
+  <script type="module" src="./components/closer.js"></script>
+  <script type="module" src="./index.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
