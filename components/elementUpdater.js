@@ -1,48 +1,55 @@
 import { base, elementTemplateTypeCash, elementTemplateTypeForwarder, elementTemplateTypeHistory, tabsContainer, todayDate } from "./constants.js";
+import { informer } from "./informer.js";
 
 export function elementUpdater(tab, location, searchText, base) {
   tabsContainer.querySelector('.' + tab).querySelector('.elements').innerHTML = '';
+  let counter = 0;
   for (let i = 0; i < base.length; i++) {
     if (location == 'all' && searchText == '') {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (location == 'FNValidityEnds' && searchText == '') {
       if ((Date.parse(base[i].FNValidityPeriod) - Date.parse(todayDate)) < 4320000) {
-        elementAppend(tab, base[i]);
+        elementAppend(tab, base[i]); counter ++;
       }
     } else if ((Date.parse(base[i].FNValidityPeriod) - Date.parse(todayDate)) < 4320000 && location == 'FNValidityEnds' && searchText !== '' && base[i].FNValidityPeriod.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if ((Date.parse(base[i].FNValidityPeriod) - Date.parse(todayDate)) < 4320000 && location == 'FNValidityEnds' && searchText !== '' && base[i].kkt.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (location == 'all' && searchText !== '' && base[i].issued.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (location == 'all' && searchText !== '' && base[i].forwarder.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (tab == 'forwarders' && searchText == '') {
-      elementAppendTypeForwarders(tab, base[i]);
+      elementAppendTypeForwarders(tab, base[i]); counter ++;
     } else if (tab == 'history' && searchText == '') {
-      elementAppendTypeHistory(tab, base[i]);
+      elementAppendTypeHistory(tab, base[i]); counter ++;
     } else if (location == 'all' && searchText !== '' && base[i].kkt.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
 
     } else if (tab == 'forwarders' && searchText !== '' && base[i].name.includes(searchText)) {
-      elementAppendTypeForwarders(tab, base[i]);
+      elementAppendTypeForwarders(tab, base[i]); counter ++;
     } else if (tab == 'forwarders' && searchText !== '' && base[i].number.includes(searchText)) {
-      elementAppendTypeForwarders(tab, base[i]);
+      elementAppendTypeForwarders(tab, base[i]); counter ++;
     } else if (tab == 'history' && searchText !== '' && base[i].kkt.includes(searchText)) {
-      elementAppendTypeHistory(tab, base[i]);
+      elementAppendTypeHistory(tab, base[i]); counter ++;
     } else if (tab == 'history' && searchText !== '' && base[i].forwarder.includes(searchText)) {
-      elementAppendTypeHistory(tab, base[i]);
+      elementAppendTypeHistory(tab, base[i]); counter ++;
+    } else if (tab == 'history' && searchText !== '' && base[i].issued.includes(searchText)) {  // not work
+      elementAppendTypeHistory(tab, base[i]); counter ++;
+    } else if (tab == 'history' && searchText !== '' && base[i].accepted.includes(searchText)) { // not work
+      elementAppendTypeHistory(tab, base[i]); counter ++;
     } else if (location == base[i].location && searchText !== '' && base[i].issued.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (location == base[i].location && searchText !== '' && base[i].forwarder.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     } else if (location == base[i].location && searchText !== '' && base[i].kkt.includes(searchText)) {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
 
     } else if (location == base[i].location && searchText == '') {
-      elementAppend(tab, base[i]);
+      elementAppend(tab, base[i]); counter ++;
     }
   }
+  informer('info', 'Найденно записей: ' + counter)
 }
 
 function elementAppend(tab, obj) {
@@ -51,7 +58,7 @@ function elementAppend(tab, obj) {
   if (obj.location == 'shop') {
     location = 'В магазине';
   } else if (obj.location == 'repair') {
-    location = 'В ремонте';
+    location = 'В ремонте по заявке ' + obj.order;
   } else {
     location = 'У экспедитора';
   }
@@ -98,7 +105,7 @@ function elementAppendTypeHistory(tab, obj) {
   } else if (obj.location == 'forwarder' && obj.Accepted !== '') {
     element.querySelector('.kkt-location').textContent = 'Принято от экспедитора: ' + obj.forwarder;
   } else if (obj.location == 'repair' && obj.issued !== '') {
-    element.querySelector('.kkt-location').textContent = 'Выдано в ремонт';
+    element.querySelector('.kkt-location').textContent = 'Выдано в ремонт по заявке ' + obj.order;
   } else if (obj.location == 'repair' && obj.Accepted !== '') {
     element.querySelector('.kkt-location').textContent = 'Принято из ремонта';
   }
@@ -116,7 +123,7 @@ function elementAppendTypeHistory(tab, obj) {
     element.querySelector('.kkt-number').style.color = 'red';
     element.querySelector('.kkt-FN-validity-period').style.color = 'red';
   }
-  tabsContainer.querySelector('.' + tab).querySelector('.elements').append(element);
+  tabsContainer.querySelector('.' + tab).querySelector('.elements').prepend(element);
 }
 /*
 [

@@ -1,5 +1,6 @@
 import { getDataBase, updateDataBase } from "./communication.js";
-import { todayDate } from "./constants.js";
+import { history, todayDate } from "./constants.js";
+import { informer } from "./informer.js";
 
 export function formPlaceholder(base, form, selector) {
   form.querySelector('.' + selector).innerHTML = '';
@@ -14,37 +15,52 @@ export function formPlaceholder(base, form, selector) {
   }
 }
 
+for (let e of document.querySelector('.form-get').querySelectorAll('.form-element')) { e.classList.toggle('form-element_closed') }
+
+export function formInptSwitch(e) {
+  console.log(123);
+}
+
 export function getCash(params) {
   let baseObj = { kkt: "", sn: "", location: "", forwarder: "", issued: "", FNValidityPeriod: "", reader: "", number: "" }
 
 }
 
 export function giveCash(form) {
+  let formSendButton = form.querySelector('.send');
+  formSendButton.disabled = true;
+  formSendButton.style.color = 'grey';
+  let baseObj = {
+    kkt: "",
+    sn: "", location: "", forwarder: "",
+    issued: "",
+    FNValidityPeriod: "",
+    reader: "",
+    number: ""
+  }
+  let historyObj = {
+    kkt: form.querySelector('.kkt').value,
+    sn: "",
+    issued: todayDate.toLocaleDateString(),
+    accepted: "",
+    location: form.querySelector('.from').value,
+    forwarder: form.querySelector('.forwarder').value,
+    reader: form.querySelector('.reader').value,
+    order: form.querySelector('.order').value
+  }
+  let forwardersObj = { name: "", number: "" }
 
-  let baseObj = { 
-    kkt: "", 
-    sn: "", location: "", forwarder: "", 
-    issued: "", 
-    FNValidityPeriod: "", 
-    reader: "", 
-    number: "" }
-  
-  let historyObj = { 
-    kkt: form.querySelector('.kkt').value, 
-    sn: "", 
-    issued: todayDate.toLocaleDateString(), 
-    accepted: "", 
-    location: form.querySelector('.from').value, 
-    forwarder: form.querySelector('.forwarder').value, 
-    reader: form.querySelector('.reader').value}
+  history.push(historyObj)
 
-  let forwardersObj = { name: "", number: ""}
+  updateDataBase('637cac0165b57a31e6bf133b', history)
+    .then(() => {
+      getDataBase('637cac0165b57a31e6bf133b')
+        .then((result) => {
+          informer('ok', 'Касса успешно выдана!')
+          formSendButton.disabled = false;
+          formSendButton.style.color = 'cornsilk';
+          history = JSON.parse(result).record;
+        })
+    })
 
-  
-
-  updateDataBase('637cac0165b57a31e6bf133b', historyObj)
-    .then(() => { getDataBase('637cac0165b57a31e6bf133b')
-      .then((result) => { console.log(result); history = JSON.parse(result).record; 
-  })})
-  
 }

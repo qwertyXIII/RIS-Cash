@@ -2,7 +2,7 @@ import { closer } from "./components/closer.js";
 import { elementUpdater } from "./components/elementUpdater.js";
 import { opener } from "./components/opener.js";
 import { allCashSearch, base, FNValidityEndsSearch, forwarders, ForwardersSearch, history, historySearch, inForwarderSearch, inRepairSearch, kktGetForm, kktGiveForm, ShopSearch, todayDate } from "./components/constants.js";
-import { formPlaceholder, giveCash } from "./components/form.js";
+import { formInptSwitch, formPlaceholder, getCash, giveCash } from "./components/form.js";
 
 
 /* Действия при нажатии на переключатель вкладок */
@@ -66,8 +66,12 @@ historySearch.addEventListener('keyup', () => {
 
 /* FORMS */
 document.querySelector('#kkt-get').addEventListener('click', (e) => {
-  console.log(e);
-})
+  console.log(e); getCash(kktGetForm);
+});
 document.querySelector('#kkt-give').addEventListener('click', (e) => {
   console.log(e); giveCash(kktGiveForm);
-})
+});
+
+for (let e of document.querySelector('.formOption')) {
+  e.addEventListener('select', () => { formInptSwitch(e) })
+}

@@ -5,6 +5,8 @@ export let kktGiveForm = document.querySelector('.form-give');
 
 export const tabsContainer = document.querySelector('.tabs');
 
+export const informerBox = document.querySelector('.informer-box');
+
 export const elementTemplateTypeCash = document.querySelector('#element-template-cash');
 export const elementTemplateTypeForwarder = document.querySelector('#element-template-forwarders');
 export const elementTemplateTypeHistory = document.querySelector('#element-template-history');
@@ -46,7 +48,7 @@ getDataBase('637cac9d65b57a31e6bf13ec')
   .then((result) => {
     forwarders = JSON.parse(result).record;
     loadingScreen.querySelector('.loading-screen__text').textContent = 'База экспедиторов загруженна...';
-    console.log(JSON.parse(result).record); 
+    console.log(JSON.parse(result).record);
   })
     .catch((result) => {
       loadingScreen.querySelector('.loading-screen__text').textContent = 'Ошибка загрузки базы экспедиторов, code: ' + result;
@@ -55,6 +57,7 @@ getDataBase('637cac9d65b57a31e6bf13ec')
 //history
 getDataBase('637cac0165b57a31e6bf133b')
   .then((result) => {
+    console.log(result);
     history = JSON.parse(result).record;
     loadingScreen.querySelector('.loading-screen__text').textContent = 'история загруженна...';
     console.log('HISTORY:');
