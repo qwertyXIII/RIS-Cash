@@ -60,12 +60,12 @@
   position: fixed;
   bottom: 0;
   right: 0;
+  width: 0;
+  height: 385px;
   display: flex;
   flex-direction: column-reverse;
-  align-items: center;
+  align-items: flex-end;
   justify-content: end;
-  max-height: 385px;
-  overflow: hidden;
 }
 .informer {
   background-color: #212121;
@@ -91,6 +91,9 @@
   font-size: 25px;
   margin: 0 10px 0 0;
 z-index: 1000;
+}
+.informer__text {
+  width: max-content;
 }
 /* HEADER */
 .header {
@@ -171,7 +174,7 @@ z-index: 1000;
 /* FORMS */
 .createOrder {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 .form {
@@ -185,6 +188,7 @@ z-index: 1000;
   height: 500px;
   transition: 200ms;
   border-radius: 10px;
+  margin: 0 1vw;
 }
 .form_input-box {
   display: flex;

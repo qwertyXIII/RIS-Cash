@@ -41,7 +41,7 @@ document.querySelector('#FNValidityEnds').addEventListener('click', () => {
   elementUpdater('FNValidityEnds', "FNValidityEnds", "", base);
 });
 
-  /* SEARCH */
+/* SEARCH */
 allCashSearch.addEventListener('keyup', () => {
   elementUpdater('allCash', 'all', allCashSearch.value, base);
 });
