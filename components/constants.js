@@ -27,7 +27,7 @@ export let base = [];
 export let forwarders = [];
 export let history = [];
 export let users = [];
-
+  
 //base
 getDataBase('637caad565b57a31e6bf11b3')
   .then((result) => {
@@ -83,7 +83,7 @@ getDataBase('637cab662b3499323b075126')
 
     /*
 setTimeout(() => {
-  for (let index = 0; index < 500; index++) {
+  for (let index = 0; index < 100; index++) {
     let e = {
       kkt: "0000000000000001",
       sn: "0000000001",
@@ -127,40 +127,7 @@ setTimeout(() => {
     return chislo;
   }
   
-}, 10000);
-for (let index = 0; index < 500; index++) {
-  let e = {
-    kkt: "0000000000000001",
-    sn: "0000000001",
-    location: "forwarder",
-    forwarder: "Антон",
-    issued: "22-11-2022",
-    FNValidityPeriod: "31-06-2022",
-    reader: "1234123412341234"
-  }
-  e.kkt = String(Math.floor(Math.random() * 9999999999999999));
-  e.sn = String(Math.floor(Math.random() * 9999999999));
-  e.issued = String(getRandomIntInclusive(1, 31) + '.' + getRandomIntInclusive(1, 12) + '.' + getRandomIntInclusive(2021, 2024));
-  e.FNValidityPeriod = String(getRandomIntInclusive(1, 31) + '.' + getRandomIntInclusive(1, 12) + '.' + getRandomIntInclusive(2022, 2023));
-  
-  function func123() {
-    var abc = "abcdefghijklmnopqrstuvwxyz";
-    var rs = "";
-    while (rs.length < 10) {
-      rs += abc[Math.floor(Math.random() * abc.length)];
-    }
-    return rs;
-  }
-  e.forwarder = func123() + ' ' + func123() + ' ' + func123();
-
-  const state = ['forwarder', 'shop', 'repair']
-  e.location = state[Math.floor(Math.random() * state.length)];
-
-  if (e.location !== 'forwarder') {
-    e.forwarder = '';
-  }
-  base.push(e);
-}
+}, 100);
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -172,5 +139,5 @@ function getRandomIntInclusive(min, max) {
   return chislo;
 }
 
-
 */
+

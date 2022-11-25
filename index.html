@@ -30,14 +30,14 @@
       <div class="tab-selector" id="FNValidityEnds">Заканчивается ФН</div>
       <div class="tab-selector" id="history">История</div>
       <div class="tab-selector" id="forwarders">Экспедиторы</div>
-      <div class="tab-selector" id="createOrder">Выдать/Принять</div>
+      <div class="tab-selector" id="createOrder">Принять/Выдать</div>
     </div>
   </header>
 
   <!-- TABS -->
   <div class="tabs ">
 
-    <div class="loading-screen">
+    <div class="loading-screen tab_closed">
       <div class="loading-box">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -50,7 +50,7 @@
       <h1 class="logo__text" style="margin: 0 0 20px 0;">RIS | Cash <span style="font-size: 10px;">By ÐXłłł</span></h1>
       <p class="logo__text" style="font-size: 15px;">WEB-Приложение для учета кассового оборудования</p>
       <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">Разработанно сотрудником сервисной зоны компании ООО "МВМ" Вертинским Дмитрием, табельный номер 146167</p>
-      <p class="logo__text" style="font-size: 10px;">v0.4.1 [beta]</p>
+      <p class="logo__text" style="font-size: 10px;">v0.5.2 [beta]</p>
     </div>
 
     <div class="tab allCash tab_closed">
@@ -147,11 +147,20 @@
           </select>
           <input class="kkt form__input" type="text" placeholder="Отсканируйте кассу" list="kktlist">
             <datalist class="kktlist" id="kktlist"></datalist>
+          <input class="sn form__input" type="text" placeholder="Введите сериный номер">
           <input class="form-element reader form__input" type="text" placeholder="Отсканируйте ридер">
           <input class="form-element forwarder form__input" type="text" placeholder="Начните вводить имя экспедитора" list="forwarderList">
             <datalist class="forwarderList" id="forwarderList"></datalist>
           <input class="form-element number form__input" type="tel" placeholder="Введите номер телефона" maxlength="11">
           <input class="form-element form-element_closed order form__input" type="text" placeholder="Введите номер заявки">
+          <div class="form-element form-element__checkbox">
+            <input class="form__checkbox szu" type="checkbox" id="szu" name="szu">
+            <label class="form__label" for="szu">Сетевое зарядное утсройство</label>
+          </div>
+          <div class="form-element form-element__checkbox">
+            <input class="form__checkbox azu" type="checkbox" id="azu" name="szu">
+            <label class="form__label" for="azu">Автомобильное зарядное утсройство</label>
+          </div>
         </div>
         <button class="send tab-selector" id="kkt-give">Выдать</button>
       </div>

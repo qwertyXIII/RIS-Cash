@@ -2,7 +2,8 @@ import { closer } from "./components/closer.js";
 import { elementUpdater } from "./components/elementUpdater.js";
 import { opener } from "./components/opener.js";
 import { allCashSearch, base, FNValidityEndsSearch, forwarders, ForwardersSearch, history, historySearch, inForwarderSearch, inRepairSearch, kktGetForm, kktGiveForm, ShopSearch, todayDate } from "./components/constants.js";
-import { formInptSwitch, formPlaceholder, getCash, giveCash } from "./components/form.js";
+import { formAutoComplete, formInptSwitch, formPlaceholder, getCash, giveCash } from "./components/form.js";
+import { informer } from "./components/informer.js";
 
 
 /* Действия при нажатии на переключатель вкладок */
@@ -71,6 +72,15 @@ document.querySelector('#kkt-get').addEventListener('click', (e) => {
 document.querySelector('#kkt-give').addEventListener('click', (e) => {
   console.log(e); giveCash(kktGiveForm);
 });
+
+/* AUTO COMPLITE FORM */ // formAutoComplete(base, form, inputText, selector)
+kktGiveForm.querySelector('.kkt').oninput = () => {
+  formAutoComplete(base, kktGiveForm, 'kkt', 'sn');
+}
+kktGiveForm.querySelector('.forwarder').oninput = () => {
+  formAutoComplete(forwarders, kktGiveForm, 'forwarder', 'number');
+}
+
 
 for (let e of document.querySelector('.formOption')) {
   e.addEventListener('select', () => { formInptSwitch(e) })
