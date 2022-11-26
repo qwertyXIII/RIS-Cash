@@ -19,14 +19,13 @@ export function formPlaceholder(base, form, selector) {
 export function formAutoComplete(base, form, inputTextSelector, completeSelector) {
   for (let i = 0; i < base.length; i++) {
 
-    if (inputTextSelector == 'kkt') {
+     if (inputTextSelector == 'kkt') {
       if (base[i].kkt.includes(form.querySelector('.' + inputTextSelector).value)) {
         form.querySelector('.' + completeSelector).value = base[i].sn;
         return;
       } else {
         form.querySelector('.' + completeSelector).value = '';
       }
-
     } else if (inputTextSelector == 'forwarder') {
       if (base[i].name.includes(form.querySelector('.' + inputTextSelector).value)) {
         form.querySelector('.' + completeSelector).value = base[i].number;
@@ -38,6 +37,7 @@ export function formAutoComplete(base, form, inputTextSelector, completeSelector
         form.querySelector('.' + completeSelector).value = '';
       }
     }
+    
   }
 }
 
