@@ -220,7 +220,7 @@ z-index: 1000;
   height: 60px;
   text-align: center;
   color: gray;
-  width: 32vw;
+  width: 70%;
   transition: 200ms;
 }
 .form__text_small {

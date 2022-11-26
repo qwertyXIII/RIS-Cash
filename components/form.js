@@ -324,7 +324,7 @@ function printer(obj) {
        <div style="height: 100vh;width: 49.5vw;outline: 1px black solid;padding: 1vw;box-sizing: border-box;display: flex;flex-direction: column;">
           <p style="margin: 0;font-size: 1.0vw;text-align: center;">Магазин №462, Новосибирск, ул Шевченко, д.17/1</p>
           <svg class="barcode" id="barcode1"></svg>
-          <h1 style="font-size: 1.7vw;margin: 0;">Корешок квитанции № ${Math.round(todayDate.getTime() / 1000)}</h1>
+          <h1 style="font-size: 1.7vw;margin: 0;">Корешок квитанции № ${todayDate.getTime()}</h1>
           <div style="outline: 1px black solid;
              display: flex;flex-wrap: wrap;margin: 10px 0 0 0;">
              <div class="table1">Заводской номер ККТ:</div>

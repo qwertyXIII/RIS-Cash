@@ -12,6 +12,10 @@ function auth() {
       document.querySelector('.auth-screen').classList.add('tab_closed');
       authUser = users[i];
       informer('ok', `Вы авторизовались как ${authInput.value}, ${users[i].name}`);
+      return;
+    } else {
+      informer('error', `Не найден пользователь ${authInput.value}`);
+      return;
     }
   }
   console.log(authUser);
