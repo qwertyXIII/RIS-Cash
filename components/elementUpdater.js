@@ -28,8 +28,6 @@ export function elementUpdater(tab, location, searchText, base) {
 
     } else if (tab == 'forwarders' && searchText !== '' && base[i].name.includes(searchText)) {
       elementAppendTypeForwarders(tab, base[i]); counter ++;
-    } else if (tab == 'forwarders' && searchText !== '' && base[i].number.includes(searchText)) {
-      elementAppendTypeForwarders(tab, base[i]); counter ++;
     } else if (tab == 'history' && searchText !== '' && base[i].kkt.includes(searchText)) {
       elementAppendTypeHistory(tab, base[i]); counter ++;
     } else if (tab == 'history' && searchText !== '' && base[i].forwarder.includes(searchText)) {

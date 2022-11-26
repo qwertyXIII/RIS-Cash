@@ -1,9 +1,11 @@
 import { closer } from "./components/closer.js";
 import { elementUpdater } from "./components/elementUpdater.js";
 import { opener } from "./components/opener.js";
-import { allCashSearch, base, FNValidityEndsSearch, forwarders, ForwardersSearch, history, historySearch, inForwarderSearch, inRepairSearch, kktGetForm, kktGiveForm, ShopSearch, todayDate } from "./components/constants.js";
-import { formAutoComplete, formInptSwitch, formPlaceholder, getCash, giveCash } from "./components/form.js";
-import { informer } from "./components/informer.js";
+import { allCashSearch, base, FNValidityEndsSearch, forwarders, ForwardersSearch, history, historySearch, inForwarderSearch, inRepairSearch, kktGetForm, kktGiveForm, ShopSearch } from "./components/constants.js";
+import { formAutoComplete, formPlaceholder, getCash, giveCash } from "./components/form.js";
+
+
+
 
 
 /* Действия при нажатии на переключатель вкладок */
@@ -81,7 +83,6 @@ kktGiveForm.querySelector('.forwarder').oninput = () => {
   formAutoComplete(forwarders, kktGiveForm, 'forwarder', 'number');
 }
 
-
-for (let e of document.querySelector('.formOption')) {
-  e.addEventListener('select', () => { formInptSwitch(e) })
+kktGetForm.querySelector('.kkt').oninput = () => {
+  formAutoComplete(base, kktGetForm, 'kkt', 'sn');
 }

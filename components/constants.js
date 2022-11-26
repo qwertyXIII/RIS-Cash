@@ -1,4 +1,5 @@
-import { getDataBase } from "./communication.js";
+import { ApiKey, baseId, forwardersId, getDataBase, historyId, usersId } from "./communication.js";
+import { informer } from "./informer.js";
 
 export let kktGetForm = document.querySelector('.form-get');
 export let kktGiveForm = document.querySelector('.form-give');
@@ -29,12 +30,12 @@ export let history = [];
 export let users = [];
   
 //base
-getDataBase('637caad565b57a31e6bf11b3')
+getDataBase(baseId, ApiKey)
   .then((result) => {
     console.log(result);
-    base = JSON.parse(result).record;
+    base = JSON.parse(result);
     loadingScreen.querySelector('.loading-screen__text').textContent = 'База касс загруженна...';
-    console.log(JSON.parse(result).record); 
+    console.log(JSON.parse(result)); 
     setTimeout(() => {
       loadingScreen.classList.add('tab_closed')
     }, 300);
@@ -42,44 +43,46 @@ getDataBase('637caad565b57a31e6bf11b3')
     .catch((result) => {
       loadingScreen.querySelector('.loading-screen__text').textContent = 'Ошибка загрузки базы касс, code: ' + result;
       console.log(result);
+      informer('error', 'Ошибка загрузки базы касс, перезагрузите страницу!');
     });
 //forwarders
-getDataBase('637cac9d65b57a31e6bf13ec')
+getDataBase(forwardersId, ApiKey)
   .then((result) => {
-    forwarders = JSON.parse(result).record;
+    forwarders = JSON.parse(result);
     loadingScreen.querySelector('.loading-screen__text').textContent = 'База экспедиторов загруженна...';
-    console.log(JSON.parse(result).record);
+    console.log(JSON.parse(result));
   })
     .catch((result) => {
       loadingScreen.querySelector('.loading-screen__text').textContent = 'Ошибка загрузки базы экспедиторов, code: ' + result;
       console.log(result);
+      informer('error', 'Ошибка загрузки базы экспедиторов, перезагрузите страницу!');
     });
 //history
-getDataBase('637cac0165b57a31e6bf133b')
+getDataBase(historyId, ApiKey)
   .then((result) => {
     console.log(result);
-    history = JSON.parse(result).record;
+    history = JSON.parse(result);
     loadingScreen.querySelector('.loading-screen__text').textContent = 'история загруженна...';
     console.log('HISTORY:');
-    console.log(JSON.parse(result).record); 
+    console.log(JSON.parse(result)); 
   })
     .catch((result) => {
       loadingScreen.querySelector('.loading-screen__text').textContent = 'Ошибка загрузки истории, code: ' + result;
       console.log(result);
+      informer('error', 'Ошибка загрузки истории, она будет недоступна!');
     });
 //users
-getDataBase('637cab662b3499323b075126')
+getDataBase(usersId, ApiKey)
   .then((result) => {
-    users = JSON.parse(result).record;
+    users = JSON.parse(result);
     loadingScreen.querySelector('.loading-screen__text').textContent = 'База пользователей загруженна...';
-    console.log(JSON.parse(result).record); 
+    console.log(JSON.parse(result)); 
   })
     .catch((result) => {
       loadingScreen.querySelector('.loading-screen__text').textContent = 'Ошибка загрузки базы пользователей, code: ' + result;
       console.log(result);
+      informer('error', 'Ошибка загрузки базы пользователей, перезагрузите страницу!');
     });
-
-
 
     /*
 setTimeout(() => {
