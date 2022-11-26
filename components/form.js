@@ -121,6 +121,7 @@ export function getCash(form) {
       }
     }
     base.push(baseObj);
+    informer('info', `Добавленна новая касса, ККТ: ${baseObj.kkt}, S/N: ${baseObj.sn}`);
   }
 
   updateDataBase(baseId, base, ApiKey)
@@ -237,6 +238,7 @@ export function giveCash(form) {
 
     if (!containsCash(form.querySelector('.kkt').value)) {
       base.push(baseObj);
+      informer('info', `Добавленна новая касса, ККТ: ${baseObj.kkt}, S/N: ${baseObj.sn}`);
     }
 
     updateDataBase(forwardersId, forwarders, ApiKey)
@@ -284,6 +286,7 @@ export function giveCash(form) {
 
     if (!containsCash(form.querySelector('.kkt').value)) {
       base.push(baseObj);
+      informer('info', `Добавленна новая касса, ККТ: ${baseObj.kkt}, S/N: ${baseObj.sn}`);
     }
 
     updateDataBase(baseId, base, ApiKey)

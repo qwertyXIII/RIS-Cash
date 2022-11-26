@@ -3,22 +3,17 @@ import { informer } from "./informer.js";
 
 export let authUser = {};
 
-let authInput = document.querySelector('#auth-input');
 function auth() {
-  console.log(authInput);
   for (let i = 0; i < users.length; i++) {
-    if (users[i].user == authInput.value) {
+    if (users[i].user == document.querySelector('#auth-input').value) {
       document.querySelector('#authUser').textContent = users[i].name;
       document.querySelector('.auth-screen').classList.add('tab_closed');
       authUser = users[i];
-      informer('ok', `Вы авторизовались как ${authInput.value}, ${users[i].name}`);
-      return;
-    } else {
-      informer('error', `Не найден пользователь ${authInput.value}`);
+      informer('ok', `Вы авторизовались как ${users[i].user}, ${users[i].name}`);
       return;
     }
   }
-  console.log(authUser);
+  informer('error', `Не найден пользователь ${document.querySelector('#auth-input')}`);
 }
 
 document.querySelector('#auth').addEventListener('click', () => {
