@@ -1,3 +1,4 @@
+import { closer } from "./closer.js";
 import { users } from "./constants.js";
 import { informer } from "./informer.js";
 
@@ -21,5 +22,6 @@ document.querySelector('#auth').addEventListener('click', () => {
 });
 
 document.querySelector('#exit').addEventListener('click', () => {
+  closer();
   document.querySelector('.auth-screen').classList.remove('tab_closed');
 });
