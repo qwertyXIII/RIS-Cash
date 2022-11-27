@@ -19,3 +19,7 @@ function auth() {
 document.querySelector('#auth').addEventListener('click', () => {
   auth();
 });
+
+document.querySelector('#exit').addEventListener('click', () => {
+  document.querySelector('.auth-screen').classList.remove('tab_closed');
+});
