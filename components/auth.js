@@ -8,6 +8,15 @@ function auth() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].user == document.querySelector('#auth-input').value) {
       document.querySelector('#authUser').textContent = users[i].name;
+      if (users[i].role == 'developer') {
+        document.querySelector('#authRole').textContent = 'Разработчик';
+      } else if (users[i].role == 'admin') {
+        document.querySelector('#authRole').textContent = 'Администратор';
+      } else if (users[i].role == 'user') {
+        document.querySelector('#authRole').textContent = 'Пользователь';
+      } else {
+        document.querySelector('#authRole').textContent = 'Роль не определена';
+      }
       document.querySelector('.auth-screen').classList.add('tab_closed');
       authUser = users[i];
       informer('ok', `Вы авторизовались как ${users[i].user}, ${users[i].name}`);
