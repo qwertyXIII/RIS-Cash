@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body class="body">
+  
+  <style>
+    html {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .barcode {margin: 1%;width: 20%;height: 5%;}
+          @media print {
+            @page { margin: 10px; }
+            body { margin: 0.5cm; }
+          }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/barcodes/JsBarcode.code128.min.js"></script>
+  <script>
+
+    setTimeout(() => {
+
+      let getDataBase = function(id, key) {
+      return new Promise(function(resolve, reject) {
+      let xhttp = new XMLHttpRequest();
+      xhttp.open('GET', 'https://api.jsonstorage.net/v1/json/' + id + '?apiKey=' + key, true);
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == XMLHttpRequest.DONE) {
+          if (this.status >= 200 && this.status < 400) {
+            resolve(this.responseText);
+          } else {
+            reject(new Error('Error ' + this.status));
+        }
+       }
+      };
+        // xhttp.setRequestHeader('X-Master-Key', '$2b$10$OLFT3Ctqe9OFt1NFRCgVvesMZJhyq.Q0AlLzqJI9bVcgjZ3x6VnL2');
+        xhttp.send();
+      });
+    }
+    getDataBase('50729c6a-dac7-4eff-b4ac-a052fcd461d7/756457e7-6e90-412f-95e7-855a6b67db71','415fe3f2-b1df-45d0-b93f-84f5f30cad70')
+      .then((result) => {
+        let array = JSON.parse(result);
+        let counter = 0;
+        counter2 = 0;
+        for (let index = 0; index < array.length; index++) {
+          console.log(array[index]);
+          counter ++;
+          document.querySelector('.body').innerHTML += (`<svg class="barcode" id="barcode${counter}"></svg>`)
+          
+        }
+        for (let index = 0; index < document.querySelectorAll('.barcode').length; index++) {
+
+          setTimeout(() => {
+            counter2++
+            JsBarcode(`#barcode${counter2}`, `${array[index].kkt}`, {
+              width: 4,
+              height: 40,
+              displayValue: true
+            });
+
+          }, 10000);
+        }
+
+
+      })
+
+    }, 1000);
+
+    
+  </script>
+</body>
+</html>
