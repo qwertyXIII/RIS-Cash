@@ -20,7 +20,6 @@ export let getDataBase = function(id, key) {
     }
    }
   };
-    // xhttp.setRequestHeader('X-Master-Key', '$2b$10$OLFT3Ctqe9OFt1NFRCgVvesMZJhyq.Q0AlLzqJI9bVcgjZ3x6VnL2');
     xhttp.send();
   });
 }
@@ -42,7 +41,6 @@ export let updateDataBase = function(id, obj, key) {
    }
   };
     xhttp.setRequestHeader("Content-Type", "application/json");
-    // xhttp.setRequestHeader('X-Master-Key', '$2b$10$OLFT3Ctqe9OFt1NFRCgVvesMZJhyq.Q0AlLzqJI9bVcgjZ3x6VnL2');
     xhttp.send(String(json));
   });
 }

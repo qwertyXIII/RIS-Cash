@@ -23,7 +23,7 @@ function auth() {
       return;
     }
   }
-  informer('error', `Не найден пользователь ${document.querySelector('#auth-input')}`);
+  informer('error', `Не найден пользователь ${document.querySelector('#auth-input').value}`);
 }
 
 document.querySelector('#auth').addEventListener('click', () => {

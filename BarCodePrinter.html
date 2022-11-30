@@ -9,17 +9,22 @@
       width: 100vw;
       height: 100vh;
       margin: 0;
-      padding: 10px;
+      padding: 0;
     }
     body {
       width: 100vw;
-      height: 100vh;
+      height: 1000vh;
       margin: 0;
       padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 5vh;
+      align-items: center;
+      justify-self: center;
+      grid-gap: 2.4vw;
+      box-sizing: border-box;
     }
-    .barcode {margin: 1%;width: 20%;height: 5%;}
+    .barcode {margin: 1%;width: 20vw;height: 5vh; outline: 1px black solid;}
           @media print {
             @page { margin: 10px; }
             body { margin: 0.5cm; }
@@ -43,7 +48,7 @@
         }
        }
       };
-        // xhttp.setRequestHeader('X-Master-Key', '$2b$10$OLFT3Ctqe9OFt1NFRCgVvesMZJhyq.Q0AlLzqJI9bVcgjZ3x6VnL2');
+        
         xhttp.send();
       });
     }
