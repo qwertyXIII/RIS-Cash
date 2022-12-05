@@ -62,7 +62,7 @@
       <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">Разработанно сотрудником
         сервисной зоны компании ООО "МВМ" Вертинским Дмитрием</p>
         <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">В ближайшее время ожидается переход на другой сервис облачных баз данных и большой рефакторинг кода</p>
-      <p class="logo__text" style="font-size: 10px;">v0.7.1 [beta]</p>
+      <p class="logo__text" style="font-size: 10px;">v0.7.2 [beta]</p>
     </div>
 
     <div class="tab allCash tab_closed">
@@ -141,9 +141,9 @@
             <option class="option" value="forwarder">От экспедитора</option>
             <option class="option" value="repair">Из ремонта</option>
           </select>
-          <input class="kkt form__input" type="text" placeholder="Отсканируйте кассу или квитанцию" list="kktlist1">
+          <input class="kkt required form__input" type="text" placeholder="Отсканируйте кассу или квитанцию" list="kktlist1">
           <datalist class="kktlist" id="kktlist1"></datalist>
-          <input class="sn form__input" type="text" placeholder="Введите сериный номер">
+          <input class="sn required form__input" type="text" placeholder="Введите сериный номер">
           <p style="height: 20px;" class="form-element form__text">Срок действия ФН до:</p>
           <input class="form-element fn form__input" type="text" placeholder="Ввердите срок действия ФН в формате дд.мм.гггг">
           <p class="form-element form__text form__text_small">оставьте пустым, если срок действия не обновлялся</p>
@@ -160,16 +160,23 @@
             <option class="option" value="forwarder">Экспедитору</option>
             <option class="option" value="repair">В ремонт</option>
           </select>
-          <input class="kkt form__input" type="text" placeholder="Отсканируйте кассу" list="kktlist">
+          <input class="kkt required form__input" type="text" placeholder="Отсканируйте кассу" list="kktlist">
           <datalist class="kktlist" id="kktlist"></datalist>
-          <input class="sn form__input" type="text" placeholder="Введите сериный номер">
+          <input class="sn required form__input" type="text" placeholder="Введите сериный номер">
           <input class="form-element reader form__input" type="text" placeholder="Отсканируйте ридер">
-          <input class="form-element forwarder form__input" type="text" placeholder="Начните вводить имя экспедитора"
+          <input class="form-element required forwarder form__input" type="text" placeholder="Начните вводить имя экспедитора"
             list="forwarderList">
           <datalist class="forwarderList" id="forwarderList"></datalist>
-          <input class="form-element number form__input" type="tel" placeholder="Введите номер телефона" maxlength="11">
-          <input class="form-element form-element_closed order form__input" type="text"
+          <input class="form-element required number form__input" type="tel" placeholder="Введите номер телефона" maxlength="11">
+          <input class="form-element required form-element_closed order form__input" type="text"
             placeholder="Введите номер заявки">
+            <input class="form-element required form-element_closed claim form__input" type="text"
+              placeholder="Введите дефект">
+          <select class="form__input form-element form-element_closed repair-type">
+            <option class="option" value="repair">Отремонтировать</option>
+            <option class="option" value="replaceFN">Заменить ФН</option>
+            <option class="option" value="repairAndreplaceFN">Отремонтировать и заменить ФН</option>
+          </select>
           <div class="form-element form-element__checkbox">
             <input class="form__checkbox szu" type="checkbox" id="szu" name="szu">
             <label class="form__label" for="szu">Сетевое зарядное утсройство</label>

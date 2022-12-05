@@ -57,9 +57,9 @@ function elementAppend(tab, obj) {
     location = 'В магазине';
   } else if (obj.location == 'repair') {
     location = 'В ремонте по заявке ' + obj.order;
-  } else {
+  } else if (obj.location == 'forwarder') {
     location = 'У экспедитора';
-  }
+  } else 
   element.querySelector('.kkt-number').textContent = obj.kkt;
   element.querySelector('.kkt-SN').textContent = obj.sn;
   element.querySelector('.kkt-location').textContent = location;
