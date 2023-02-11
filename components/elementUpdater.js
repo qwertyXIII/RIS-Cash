@@ -1,4 +1,4 @@
-import { base, elementTemplateTypeCash, elementTemplateTypeForwarder, elementTemplateTypeHistory, tabsContainer, todayDate } from "./constants.js";
+import { elementTemplateTypeCash, elementTemplateTypeForwarder, elementTemplateTypeHistory, tabsContainer, todayDate } from "./constants.js";
 import { informer } from "./informer.js";
 
 export function elementUpdater(tab, location, searchText, base) {
@@ -53,6 +53,7 @@ export function elementUpdater(tab, location, searchText, base) {
 function elementAppend(tab, obj) {
   let element = elementTemplateTypeCash.content.querySelector('.element').cloneNode(true);
   let location;
+  let kkt;
   if (obj.location == 'shop') {
     location = 'В магазине';
   } else if (obj.location == 'repair') {
@@ -60,7 +61,10 @@ function elementAppend(tab, obj) {
   } else if (obj.location == 'forwarder') {
     location = 'У экспедитора';
   } else 
+  element.querySelector('.kkt-number').textContent = лле
+  // По неизвестным мне причинам, строка ниже не работает... 
   element.querySelector('.kkt-number').textContent = obj.kkt;
+  // P.s. Удивительно, но заработало... Не знаю что случилось...
   element.querySelector('.kkt-SN').textContent = obj.sn;
   element.querySelector('.kkt-location').textContent = location;
   element.querySelector('.kkt-forwarder').textContent = obj.forwarder + ' ' + obj.number;

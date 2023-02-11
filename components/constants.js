@@ -24,11 +24,11 @@ export let loadingScreen = document.querySelector('.loading-screen');
 
 export let todayDate = new Date();
 
-export let base = [];
+export let base = [123, 1234, 12345];
 export let forwarders = [];
 export let history = [];
 export let users = [];
-  
+  console.log(base);
 //base
 getDataBase(baseId, ApiKey)
   .then((result) => {
