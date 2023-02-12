@@ -62,7 +62,7 @@
       <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">Разработанно сотрудником
         сервисной зоны компании ООО "МВМ" Вертинским Дмитрием</p>
         <p class="logo__text" style="font-size: 15px; margin: 100px 0 0 0; max-width: 1000px;">В ближайшее время ожидается переход на другой сервис облачных баз данных и большой рефакторинг кода</p>
-      <p class="logo__text" style="font-size: 10px;">v0.7.3 [beta]</p>
+      <p class="logo__text" style="font-size: 10px;">v0.7.4 [beta]</p>
     </div>
 
     <div class="tab allCash tab_closed">
@@ -216,8 +216,12 @@
           <p class="element__text">Местонахождение оборудования: <span class="kkt-data kkt-location">у
               экспедитора</span> <span class="kkt-data kkt-forwarder">ФИО экспедитора</span></p>
         </div>
-        <ion-icon class="opener" name="chevron-down-outline"></ion-icon>
-      </div>
+        <div  class="element__visible__buttons__container">
+          <ion-icon class="element__visible__buttons barcode-creator" name="barcode-outline"></ion-icon>
+          <ion-icon class="element__visible__buttons" name="create-outline"></ion-icon>
+          <ion-icon class="element__visible__buttons opener" name="chevron-down-outline"></ion-icon>
+        </div>
+      </div>  
 
       <div class="element__invisible element__invisible_closed">
         <p class="element__text">Ридер с кассой №: <span class="kkt-data kkt-reader"></span></p>
@@ -266,6 +270,7 @@
   <script type="module" src="./components/closer.js"></script>
   <script type="module" src="./components/opener.js"></script>
   <script type="module" src="./components/informer.js"></script>
+  <script type="module" src="./components/printer.js"></script>
   <script type="module" src="./index.js"></script>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
