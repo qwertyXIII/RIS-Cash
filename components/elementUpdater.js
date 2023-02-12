@@ -64,16 +64,20 @@ function elementAppend(tab, obj) {
   element.querySelector('.kkt-number').textContent = лле
   // По неизвестным мне причинам, строка ниже не работает... 
   element.querySelector('.kkt-number').textContent = obj.kkt;
-  // P.s. Удивительно, но заработало... Не знаю что случилось...
+  // P.s. Удивительн  о, но заработало... Не знаю что случилось...
   element.querySelector('.kkt-SN').textContent = obj.sn;
   element.querySelector('.kkt-location').textContent = location;
   element.querySelector('.kkt-forwarder').textContent = obj.forwarder + ' ' + obj.number;
   element.querySelector('.kkt-reader').textContent = obj.reader;
   element.querySelector('.kkt-FN-validity-period').textContent = obj.FNValidityPeriod;
   element.querySelector('.kkt-issued').textContent = obj.issued;
+  // Обработчики событий //
   element.querySelector('.opener').addEventListener('click', function () {
     element.querySelector('.opener').classList.toggle('opener_flipped');
     element.querySelector('.element__invisible').classList.toggle('element__invisible_closed');
+  });
+  element.querySelector('.barcode-creator').addEventListener('click', function () {
+    printBarCode(obj.kkt);
   });
   element.querySelector('.opener').addEventListener('dblclick', function () {
     for (let e of tabsContainer.querySelectorAll('.element')) {
@@ -127,6 +131,56 @@ function elementAppendTypeHistory(tab, obj) {
   }
   tabsContainer.querySelector('.' + tab).querySelector('.elements').prepend(element);
 }
+
+function printBarCode(number) {
+  let printWindow = window.open('', '', 'width=891px,height=630px,resizable=no,menubar=no,toolbar=no,location=no,status=no,scrollbars=no')
+  printWindow.document.write(`
+  <body class="body">
+    
+      <svg class="barcode" id="barcode"></svg>
+  
+    <style>
+      html {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 5vh;
+        align-items: center;
+        justify-self: center;
+        grid-gap: 2.4vw;
+        box-sizing: border-box;
+      }
+      .barcode {margin: 1%;width: 20vw;height: 5vh; outline: 1px black solid;}
+            @media print {
+              @page { margin: 10px; }
+              body { margin: 0.5cm; }
+            }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/barcodes/JsBarcode.code128.min.js"></script>
+    <script>
+      JsBarcode('#barcode', '${number}', {
+        width: 4,
+        height: 40,
+        displayValue: true
+      });
+    </script>
+  </body>
+    
+  `);
+  setTimeout(() => {
+    printWindow.print();
+  }, 500);
+}
+
 /*
 [
   {

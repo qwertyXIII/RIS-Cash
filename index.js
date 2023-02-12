@@ -9,38 +9,38 @@ import { formAutoComplete, formPlaceholder, getCash, giveCash } from "./componen
 
 
 /* Действия при нажатии на переключатель вкладок */
-document.querySelector('#allCash').addEventListener('click', () => {
-  closer(); opener('allCash');
+document.querySelector('#allCash').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'allCash');
   elementUpdater('allCash', "all", "", base);
 });
-document.querySelector('#inRepair').addEventListener('click', () => {
-  closer(); opener('inRepair');
+document.querySelector('#inRepair').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'inRepair');
   elementUpdater('inRepair', "repair", "", base);
 });
-document.querySelector('#inForwarder').addEventListener('click', () => {
-  closer(); opener('inForwarder');
+document.querySelector('#inForwarder').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'inForwarder');
   elementUpdater('inForwarder', "forwarder", "", base);
 });
-document.querySelector('#history').addEventListener('click', () => {
-  closer(); opener('history');
+document.querySelector('#history').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'history');
   elementUpdater('history', "", "", history);
 });
-document.querySelector('#forwarders').addEventListener('click', () => {
-  closer(); opener('forwarders');
+document.querySelector('#forwarders').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'forwarders');
   elementUpdater('forwarders', "", "", forwarders);
 });
-document.querySelector('#inShop').addEventListener('click', () => {
-  closer(); opener('inShop');
+document.querySelector('#inShop').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'inShop');
   elementUpdater('inShop', "shop", "", base);
 });
-document.querySelector('#createOrder').addEventListener('click', () => {
-  closer(); opener('createOrder');
+document.querySelector('#createOrder').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'createOrder');
   formPlaceholder(forwarders, kktGiveForm, 'forwarderList');
   formPlaceholder(base, kktGiveForm, 'kktlist')
   formPlaceholder(base, kktGetForm, 'kktlist');
 });
-document.querySelector('#FNValidityEnds').addEventListener('click', () => {
-  closer(); opener('FNValidityEnds');
+document.querySelector('#FNValidityEnds').addEventListener('click', (e) => {
+  closer(); opener(e.target,  'FNValidityEnds');
   elementUpdater('FNValidityEnds', "FNValidityEnds", "", base);
 });
 

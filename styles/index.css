@@ -146,7 +146,7 @@ z-index: 1000;
   color: cornsilk;
   box-sizing: border-box;
   font-size: 15px;
-  padding: 7px 10px;
+  padding: 10px 10px;
   background-color: transparent;
   transition: 200ms;
   height: 35px;
@@ -155,15 +155,19 @@ z-index: 1000;
   outline: none;
 }
 .tab-selector:hover {
-  padding: 7px 30px;
+  padding: 10px 30px;
   background-color: rgba(136, 136, 136, 0.527);
 }
 .tab-selector:focus {
-  padding: 7px 30px;
+  padding: 10px 30px;
   background-color: rgba(136, 136, 136, 0.527);
 }
 .tab-selector:active {
-  padding: 7px 20px ;
+  padding: 10px 20px ;
+  background-color: rgba(136, 136, 136, 0.87);
+}
+.tab-selector_active {
+  padding: 10px 30px;
   background-color: rgba(136, 136, 136, 0.87);
 }
 
@@ -200,7 +204,7 @@ z-index: 1000;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #979797;
+  background-color: #343434;
   width: 400px;
   height: 500px;
   transition: 200ms;
@@ -381,13 +385,22 @@ z-index: 1000;
 .element__visible__texts {
   width: max-content;
 }
-.opener {
-  font-size: 50px;
-  transition: 200ms;
+.element__visible__buttons__container {
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+}
+.element__visible__buttons {
+  font-size: 30px;
+  margin: 0 0 0 5px;
   color: gray;
   cursor: pointer;
 }
-.opener:hover {
+.element__visible__buttons:first-of-type {
+  margin: 0 0 0 auto;
+}
+.element__visible__buttons:hover {
   color: cornsilk;
 }
 .opener_flipped {
