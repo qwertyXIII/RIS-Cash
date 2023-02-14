@@ -175,12 +175,40 @@ z-index: 1000;
 .start-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #292929;
 }
 .start-page .tab-selector:hover {
   color: white;
+}
+
+.news-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: start;
+}
+.news-container__header {
+  color: cornsilk;
+  text-align: start;
+}
+.news {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.news__header {
+  margin: 0;
+}
+.news__text {
+  margin: 0;
+  padding: 5px;
 }
 /* TABS */
 .tabs {
@@ -308,7 +336,7 @@ z-index: 1000;
   width: 20px;
   height: 20px;
   z-index: 147;
-  background-color: #939393;
+  background-color: #3e3e3e;
   border-radius: 5px;
   transition: 200ms;
 }.form__checkbox::after {
